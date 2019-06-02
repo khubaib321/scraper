@@ -47,6 +47,7 @@ class JobScraper extends ScraperBase
      */
     private function scrapeCurrentPage($maxJobID)
     {
+        echo "\n" . 'CONNECTING TO WEBPAGE => ', $this->currentPage, "\n";
         if ($this->stop) {
             return false;
         }
@@ -58,7 +59,6 @@ class JobScraper extends ScraperBase
         }
 
         require 'utils/commonWords.php';
-        echo "\n" . 'SCRAPING FROM => ', $this->currentPage, "\n";
         $jobLinks = $this->htmlDom->find('tr.athing td.title a.storylink');
         foreach ($jobLinks as $i => $a) {
             $id = $a->parent()->parent()->id;
@@ -133,8 +133,7 @@ class JobScraper extends ScraperBase
     public function getMaxJobID()
     {
         $sql = 'SELECT MAX(id) as ID FROM companies_jobs';
-        $dbMan = new DBManager();
-        $result = $dbMan->executeRawQuery($sql);
+        $result = DBManager::executeRawQuery($sql);
         if (isset($result[0]) &&
             isset($result[0]['ID'])
         ) {

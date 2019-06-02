@@ -38,13 +38,12 @@ class Company
         if ($this->loadCompany()) {
             return $this->id;
         }
-        $dbMan = new DBManager();
-        $this->id = $dbMan->insert([
-            'table' => $this->tableName,
-            'columnValuePairs' => [
-                'name' => $this->companyName,
-                'location' => $this->companyLocation,
-            ],
+        $this->id = DBManager::insert([
+                'table' => $this->tableName,
+                'columnValuePairs' => [
+                    'name' => $this->companyName,
+                    'location' => $this->companyLocation,
+                ],
         ]);
         return $this->id;
     }
@@ -67,8 +66,7 @@ class Company
             return true;
         }
         $table = 'companies_jobs';
-        $dbMan = new DBManager();
-        $dbMan->insert([
+        DBManager::insert([
             'table' => $table,
             'columnValuePairs' => [
                 'id' => $id,
@@ -86,10 +84,9 @@ class Company
     public function loadCompany()
     {
         $sql = "SELECT id FROM {$this->tableName} WHERE name = ? AND location = ?";
-        $dbMan = new DBManager();
-        $result = $dbMan->executeRawQuery($sql, [
-            $this->companyName,
-            $this->companyLocation,
+        $result = DBManager::executeRawQuery($sql, [
+                $this->companyName,
+                $this->companyLocation,
         ]);
         if (isset($result[0]['id']) && !empty($result[0]['id'])) {
             $this->id = $result[0]['id'];
@@ -108,10 +105,9 @@ class Company
     {
         $table = 'companies_jobs';
         $sql = "SELECT id FROM {$table} WHERE company_id = ? AND job_id = ?";
-        $dbMan = new DBManager();
-        $result = $dbMan->executeRawQuery($sql, [
-            $this->id,
-            $job->id,
+        $result = DBManager::executeRawQuery($sql, [
+                $this->id,
+                $job->id,
         ]);
         return isset($result[0]['id']) && !empty($result[0]['id']) ?
             true : false;

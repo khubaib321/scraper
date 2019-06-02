@@ -36,12 +36,11 @@ class Job
         if ($this->loadJob()) {
             return $this->id;
         }
-        $dbMan = new DBManager();
-        $this->id = $dbMan->insert([
-            'table' => $this->tableName,
-            'columnValuePairs' => [
-                'name' => $this->jobName,
-            ],
+        $this->id = DBManager::insert([
+                'table' => $this->tableName,
+                'columnValuePairs' => [
+                    'name' => $this->jobName,
+                ],
         ]);
         return $this->id;
     }
@@ -53,9 +52,8 @@ class Job
     public function loadJob()
     {
         $sql = "SELECT id FROM {$this->tableName} WHERE name = ?";
-        $dbMan = new DBManager();
-        $result = $dbMan->executeRawQuery($sql, [
-            $this->jobName,
+        $result = DBManager::executeRawQuery($sql, [
+                $this->jobName,
         ]);
         if (isset($result[0]['id']) && !empty($result[0]['id'])) {
             $this->id = $result[0]['id'];
