@@ -32,4 +32,9 @@ Uses library [PHP Simple HTML DOM Parser](https://simplehtmldom.sourceforge.io/)
 - Find tags on an HTML page with selectors just like jQuery.
 - Extract contents from HTML in a single line.
 
+
+# Assumptions
+- This is a backend job only. Does not require any frontend user interface.
+- Scraper is allowed to run without any interruptions until it stops by itself.
+
 Thank you.
