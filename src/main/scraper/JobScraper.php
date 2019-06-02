@@ -95,7 +95,7 @@ class JobScraper extends ScraperBase
         $key = $this->findCompanyName($string);
         if (!empty($key)) {
             $this->jobName = $this->getStringBetween($string, " {$key} ", ' in ');
-            $this->companyLocation = $this->getStringAfter($string, 'in ');
+            $this->companyLocation = $this->getStringAfter($string, ' in ');
         }
     }
 

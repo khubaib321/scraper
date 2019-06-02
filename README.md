@@ -25,7 +25,7 @@ From the project root run the following commands:
 ### `php -f main.php`
 The scraper will run and save the information in the database. It will keep running until it cannot find more jobs or the cannot connect to the [website](https://news.ycombinator.com/jobs).
 
-Uses library [PHP Simple HTML DOM Parser](https://simplehtmldom.sourceforge.io/) for scraping.
+Uses library [PHP Simple HTML DOM Parser](https://simplehtmldom.sourceforge.io/) for fetching the webpage.
 - A HTML DOM parser written in PHP5+ let you manipulate HTML in a very easy way!
 - Require PHP 5+.
 - Supports invalid HTML.
