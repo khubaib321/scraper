@@ -10,7 +10,7 @@
  *
  * @author Khubaib-LT
  */
-require_once 'Scraperbase.php';
+require_once 'ScraperBase.php';
 require_once 'entities/Job.php';
 require_once 'entities/Company.php';
 
