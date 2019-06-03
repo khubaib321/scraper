@@ -9,14 +9,14 @@ Run xampp server (Apache and MySQL).
 ### `git clone https://github.com/khubaib321/scraper.git `
 Clone repository. 
 
-From the project root navigate to directory `src/data/config`.
-Open file `local.php` and update database credentials according to the system. Do not modify value for key `database`.
-
 From the project root run the following commands:
 
 ### `cd src/data`
 ### `php -f install.php`
-The above commands will create the database on MySQL server running on localhost. 
+The above commands will create the required database on MySQL server running on localhost. 
+
+From the project root navigate to directory `src/data/config`.
+Open file `local.php` and update database credentials according to the system and change value agains `database` key to 'scraper'.
 
 ## Run Scraper
 From the project root run the following commands:
